@@ -21,7 +21,8 @@ public class Main {
 			
 			
 		} catch (SQLException e) {
-			 e.printStackTrace();
+			// e.printStackTrace();
+			System.out.println(e);
 			 
 		}
 	}
