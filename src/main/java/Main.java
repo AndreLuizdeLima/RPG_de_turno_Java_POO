@@ -1,30 +1,17 @@
 import java.sql.SQLException;
 
-import database.DatabaseConnection;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import entities.PopulandoRacas;
 
 public class Main {
 
 	public static void main(String[] args) throws SQLException {
+	
+		PopulandoRacas popularRacas = new PopulandoRacas();
 		
-		try {
-			
-			Connection conexao = DatabaseConnection.conectar();
-			System.out.println("Banco criado com sucesso!!!");
-			
-			conexao.close();
-			
-			
-		} catch (SQLException e) {
-			// e.printStackTrace();
-			System.out.println(e);
-			 
-		}
+		popularRacas.PopulandoRacas();
+		
+		
+		
 	}
 
 }

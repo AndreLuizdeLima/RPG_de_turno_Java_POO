@@ -2,7 +2,6 @@ package entities;
 
 public class Raca {
 
-	private int id;
 	private String nome;
 	private int vida;
 	private int bonusVida;
@@ -11,18 +10,7 @@ public class Raca {
 	private int bonusPoderHabilidade;
 	
 	
-	
 
-	public Raca(int id, String nome, int vida, int bonusVida, int bonusEscudo, int bonusPoderFisico,
-			int bonusPoderHabilidade) {
-		this.id = id;
-		this.nome = nome;
-		this.vida = vida;
-		this.bonusVida = bonusVida;
-		this.bonusEscudo = bonusEscudo;
-		this.bonusPoderFisico = bonusPoderFisico;
-		this.bonusPoderHabilidade = bonusPoderHabilidade;
-	}
 
 	public String getNome() {
 		return nome;
@@ -72,13 +60,12 @@ public class Raca {
 		this.bonusPoderHabilidade = bonusPoderHabilidade;
 	}
 
-	public int getId() {
-		return id;
+	@Override
+	public String toString() {
+		return "Raca [nome=" + nome + ", vida=" + vida + ", bonusVida=" + bonusVida + ", bonusEscudo=" + bonusEscudo
+				+ ", bonusPoderFisico=" + bonusPoderFisico + ", bonusPoderHabilidade=" + bonusPoderHabilidade + "]";
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	
 	
