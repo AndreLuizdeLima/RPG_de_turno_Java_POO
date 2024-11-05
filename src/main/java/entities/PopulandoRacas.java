@@ -25,10 +25,19 @@ public class PopulandoRacas {
 		raca.setBonusPoderHabilidade(50);
 		repositoryRaca.salvarRaca(raca);
 		
+		raca.setNome("Elfo");
+		raca.setVida(1000);
+		raca.setBonusVida(25);
+		raca.setBonusEscudo(25);
+		raca.setBonusPoderFisico(25);
+		raca.setBonusPoderHabilidade(50);
+		repositoryRaca.salvarRaca(raca);
+		
 		
 		
 	}
-	
+
+
 	
 	
 }

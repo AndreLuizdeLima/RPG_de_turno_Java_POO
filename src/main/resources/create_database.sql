@@ -13,7 +13,7 @@ create table IF NOT EXISTS racas (
 );
 
 create table IF NOT EXISTS arquetipos (
-    id int primary key,
+    id int primary key AUTO_INCREMENT,
     nome varchar(255),
     bonusVida int,
     bonusEscudo int,

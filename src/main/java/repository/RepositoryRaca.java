@@ -42,7 +42,7 @@ public class RepositoryRaca {
     
     public List<Raca> buscarTodasRacas() {
     
-        List<Raca> racas = new ArrayList<>();
+        List<Raca> racasArray = new ArrayList<>();
     
         String sql = "SELECT * FROM racas";
 
@@ -60,7 +60,7 @@ public class RepositoryRaca {
                 raca.setBonusPoderFisico(rs.getInt("bonusPoderFisico"));
                 raca.setBonusPoderHabilidade(rs.getInt("bonusPoderHabilidade"));
     
-                racas.add(raca);
+                racasArray.add(raca);
                 
                 
             }
@@ -71,7 +71,7 @@ public class RepositoryRaca {
         }
 
     
-        return racas;
+        return racasArray;
     }
 
    
