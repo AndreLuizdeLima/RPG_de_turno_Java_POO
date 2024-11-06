@@ -1,9 +1,8 @@
 import java.sql.SQLException;
 
-import entities.Personagem;
-import repository.RepositoryArquetipo;
-import repository.RepositoryPersonagem;
-import repository.RepositoryRaca;
+import entities.Arquetipo;
+import entities.Raca;
+import utilities.CalculadoraDePoderes;
 
 
 public class Main {
@@ -13,12 +12,20 @@ public class Main {
 		//IniciandoBanco iniciandoBanco = new IniciandoBanco();
 		//iniciandoBanco.IniciandoBanco();
 		
-		RepositoryRaca repositoryRaca = new RepositoryRaca();
-		RepositoryArquetipo repositoryArquetipo = new RepositoryArquetipo();
-		RepositoryPersonagem repositoryPersonagem = new RepositoryPersonagem();
+		//RepositoryRaca repositoryRaca = new RepositoryRaca();
+		//RepositoryArquetipo repositoryArquetipo = new RepositoryArquetipo();
+		//RepositoryPersonagem repositoryPersonagem = new RepositoryPersonagem();
 		
-		Personagem personagem = new Personagem("Andre", repositoryRaca.buscarRacaPorNome("Humanos")  , repositoryArquetipo.buscarArquetipoPorNome("Mago") );
-		repositoryPersonagem.salvarPersonagem(personagem);
+		//Personagem personagem = new Personagem("Andre", repositoryRaca.buscarRacaPorNome("Humanos")  , repositoryArquetipo.buscarArquetipoPorNome("Mago") );
+		//repositoryPersonagem.salvarPersonagem(personagem);
+		
+		CalculadoraDePoderes calcular = new CalculadoraDePoderes();
+		
+		System.out.println(calcular.calculaVida(1, 1));
+		
+		Raca raca = new Raca();
+		Arquetipo arquetipo = new Arquetipo();
+		
 		
 		
 	}
