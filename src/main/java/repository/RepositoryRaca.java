@@ -31,7 +31,7 @@ public class RepositoryRaca {
     
             stmt.executeUpdate();
 
-            System.out.println("Raça " + raca.getNome() + " salva com sucesso!!");
+            //System.out.println("Raça " + raca.getNome() + " salva com sucesso!!");
     
         } catch (SQLException e) {
     

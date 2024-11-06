@@ -30,7 +30,7 @@ public class RepositoryArquetipo {
 	    
 	            stmt.executeUpdate();
 
-	            System.out.println("Arquetipo " + arquetipo.getNome() + " salvo com sucesso!!");
+	           //System.out.println("Arquetipo " + arquetipo.getNome() + " salvo com sucesso!!");
 	            
 	            
 	    

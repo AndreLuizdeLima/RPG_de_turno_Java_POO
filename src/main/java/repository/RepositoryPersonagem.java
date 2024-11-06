@@ -41,7 +41,7 @@ public class RepositoryPersonagem {
             //}
 
             // Mensagem de confirmação de que a raça foi salva com sucesso
-            System.out.println("Personagem " + personagem.getNome() );
+            //System.out.println("Personagem " + personagem.getNome() );
             
             
             
