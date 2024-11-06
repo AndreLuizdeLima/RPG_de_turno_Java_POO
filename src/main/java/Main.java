@@ -1,29 +1,30 @@
 import java.sql.SQLException;
 
 import entities.Personagem;
-import entities.PopulandoArquetipo;
-import entities.PopulandoRacas;
 import repository.RepositoryArquetipo;
 import repository.RepositoryPersonagem;
 import repository.RepositoryRaca;
+//import utilities.IniciandoBanco;
 
 
 public class Main {
 
 	public static void main(String[] args) throws SQLException {
 	
-		PopulandoRacas popularRacas = new PopulandoRacas();
-		PopulandoArquetipo popularArquetipos = new PopulandoArquetipo();
-		popularArquetipos.PopulandoArquetipo();
-		popularRacas.PopulandoRacas();
+		/*
+		IniciandoBanco iniciandoBanco = new IniciandoBanco();
+		iniciandoBanco.IniciandoBanco();
+		*/
+		
 		RepositoryRaca repositoryRaca = new RepositoryRaca();
 		RepositoryArquetipo repositoryArquetipo = new RepositoryArquetipo();
 		RepositoryPersonagem repositoryPersonagem = new RepositoryPersonagem();
-		// nome raca e arquetipo
-		repositoryRaca.buscarRacaPorNomeObjeto("Elfo");
-		Personagem personagem = new Personagem("Andre", repositoryRaca.buscarRacaPorNome("Elfo"), repositoryArquetipo.buscarArquetipoPorNome("Magos"));
-		//repositoryPersonagem.salvarPersonagem(personagem);
-		personagem.setandoVida();
+		
+		Personagem personagem = new Personagem("Andre", repositoryRaca.buscarRacaPorNome("Humanos")  , repositoryArquetipo.buscarArquetipoPorNome("Mago") );
+		repositoryPersonagem.salvarPersonagem(personagem);
+		Personagem personagem2 = new Personagem("Eduar", repositoryRaca.buscarRacaPorNome("Elfos")  , repositoryArquetipo.buscarArquetipoPorNome("Bardo") );
+		repositoryPersonagem.salvarPersonagem(personagem2);
+		
 		
 	}
 

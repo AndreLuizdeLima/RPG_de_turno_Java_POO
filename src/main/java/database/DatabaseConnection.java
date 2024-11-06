@@ -12,7 +12,7 @@ public class DatabaseConnection {
     
     private static final String DATABASE_NAME = "rpg";
     
-    private static final String URL = "jdbc:mysql://localhost:3307/";
+    private static final String URL = "jdbc:mysql://localhost:3306/";
     
     private static final String USER = "root";
     
@@ -23,7 +23,7 @@ public class DatabaseConnection {
     
     public static Connection conectar() throws SQLException {
         final String fullUrl = databaseInitialized ? URL + DATABASE_NAME : URL;
-        System.out.println("Tentando conectar com" + fullUrl);
+        //System.out.println("Tentando conectar com" + fullUrl);
     
         Connection conexao = DriverManager.getConnection(fullUrl, USER, PASSWORD);
     
@@ -32,6 +32,8 @@ public class DatabaseConnection {
             inicializarBancoDeDados(conexao);
     
             databaseInitialized = true;
+            
+            
         }
     
         return conexao;

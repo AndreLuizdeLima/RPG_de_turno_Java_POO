@@ -30,7 +30,7 @@ public class RepositoryArquetipo {
 	    
 	            stmt.executeUpdate();
 
-	            System.out.println("Arquetipo " + arquetipo.getNome() + " salvo com sucesso!!");
+	           //System.out.println("Arquetipo " + arquetipo.getNome() + " salvo com sucesso!!");
 	            
 	            
 	    
@@ -77,10 +77,9 @@ public class RepositoryArquetipo {
 
 	   
 	    
+	    public Arquetipo buscarArquetipoPorId(int id) {
 	    
-	    public Arquetipo buscarArquetipoPorNomeObjeto(String nome) {
-	    
-	        String sql = "SELECT * FROM arquetipos WHERE nome = ?";
+	        String sql = " SELECT * FROM arquetipos WHERE id = ?";
 	        Arquetipo arquetipo = null;
 
 	    
@@ -88,17 +87,17 @@ public class RepositoryArquetipo {
 	             PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
 	    
-	            stmt.setString(1, nome);
+	            stmt.setInt(1, id);
 	    
 	            try (ResultSet rs = stmt.executeQuery()) {
 	    
 	                if (rs.next()) {
-	                	Arquetipo arquetipo1 = new Arquetipo();
-	                	arquetipo1.setNome(rs.getString("nome"));
-	                	arquetipo1.setBonusVida(rs.getInt("bonusVida"));
-	                	arquetipo1.setBonusEscudo(rs.getInt("bonusEscudo"));
-	                	arquetipo1.setBonusPoderFisico(rs.getInt("bonusPoderFisico"));
-	                	arquetipo1.setBonusPoderHabilidade(rs.getInt("bonusPoderHabilidade"));
+	                	arquetipo = new Arquetipo();
+	                	arquetipo.setNome(rs.getString("nome"));
+	                	arquetipo.setBonusVida(rs.getInt("bonusVida"));
+	                	arquetipo.setBonusEscudo(rs.getInt("bonusEscudo"));
+	                	arquetipo.setBonusPoderFisico(rs.getInt("bonusPoderFisico"));
+	                	arquetipo.setBonusPoderHabilidade(rs.getInt("bonusPoderHabilidade"));
 	                }
 	            }
 

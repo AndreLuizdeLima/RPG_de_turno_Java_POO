@@ -1,5 +1,6 @@
-package entities;
+package utilities;
 
+import entities.Raca;
 import repository.RepositoryRaca;
 
 public class PopulandoRacas {
@@ -17,7 +18,7 @@ public class PopulandoRacas {
 		raca.setBonusPoderHabilidade(80);
 		repositoryRaca.salvarRaca(raca);
 		
-		raca.setNome("Elfo");
+		raca.setNome("Elfos");
 		raca.setVida(800);
 		raca.setBonusVida(50);
 		raca.setBonusEscudo(30);
