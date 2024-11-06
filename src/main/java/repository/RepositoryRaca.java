@@ -77,9 +77,9 @@ public class RepositoryRaca {
    
     
     
-    public Raca buscarRacaPorNomeObjeto(String nome) {
+    public Raca buscarRacaPorObjetoId(int id) {
     
-        String sql = "SELECT * FROM racas WHERE nome = ?";
+        String sql = "SELECT * FROM racas WHERE id = ?";
         Raca raca = null;
 
     
@@ -87,7 +87,7 @@ public class RepositoryRaca {
              PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
     
-            stmt.setString(1, nome);
+            stmt.setInt(1, id);
     
             try (ResultSet rs = stmt.executeQuery()) {
     

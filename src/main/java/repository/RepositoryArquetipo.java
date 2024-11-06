@@ -78,9 +78,9 @@ public class RepositoryArquetipo {
 	   
 	    
 	    
-	    public Arquetipo buscarArquetipoPorNomeObjeto(String nome) {
+	    public Arquetipo buscarArquetipoPorId(int id) {
 	    
-	        String sql = "SELECT * FROM arquetipos WHERE nome = ?";
+	        String sql = "SELECT * FROM arquetipos WHERE id = ?";
 	        Arquetipo arquetipo = null;
 
 	    
@@ -88,7 +88,7 @@ public class RepositoryArquetipo {
 	             PreparedStatement stmt = conexao.prepareStatement(sql)) {
 
 	    
-	            stmt.setString(1, nome);
+	            stmt.setInt(1, id);
 	    
 	            try (ResultSet rs = stmt.executeQuery()) {
 	    
