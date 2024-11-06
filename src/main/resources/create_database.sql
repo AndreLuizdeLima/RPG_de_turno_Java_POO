@@ -22,7 +22,7 @@ create table IF NOT EXISTS arquetipos (
 );
 
 create table IF NOT EXISTS personagens (
-    id int primary key,
+    id int primary key AUTO_INCREMENT,
     nome varchar(255),
     vida int,
     escudo int,

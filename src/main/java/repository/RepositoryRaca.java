@@ -77,9 +77,9 @@ public class RepositoryRaca {
    
     
     
-    public Raca buscarRacaPorNome(String nome) {
+    public Raca buscarRacaPorNomeObjeto(String nome) {
     
-        String sql = "SELECT * FROM raca WHERE id = ?";
+        String sql = "SELECT * FROM racas WHERE nome = ?";
         Raca raca = null;
 
     
@@ -108,5 +108,35 @@ public class RepositoryRaca {
 
     
         return raca;
+    }
+    
+    public int buscarRacaPorNome(String nome) {
+        
+        String sql = "SELECT id FROM racas WHERE nome = ?";
+        int racaID = 0;
+
+    
+        try (Connection conexao = DatabaseConnection.conectar();
+             PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+    
+            stmt.setString(1, nome);
+    
+            try (ResultSet rs = stmt.executeQuery()) {
+    
+                if (rs.next()) {
+                	
+                	racaID = rs.getInt("id");
+                	
+                }
+            }
+
+        } catch (SQLException e) {
+    
+            e.printStackTrace();
+        }
+
+    
+        return racaID;
     }
 }

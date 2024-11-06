@@ -31,6 +31,8 @@ public class RepositoryArquetipo {
 	            stmt.executeUpdate();
 
 	            System.out.println("Arquetipo " + arquetipo.getNome() + " salvo com sucesso!!");
+	            
+	            
 	    
 	        } catch (SQLException e) {
 	    
@@ -76,7 +78,7 @@ public class RepositoryArquetipo {
 	   
 	    
 	    
-	    public Arquetipo buscarArquetipoPorNome(String nome) {
+	    public Arquetipo buscarArquetipoPorNomeObjeto(String nome) {
 	    
 	        String sql = "SELECT * FROM arquetipos WHERE nome = ?";
 	        Arquetipo arquetipo = null;
@@ -107,6 +109,36 @@ public class RepositoryArquetipo {
 
 	    
 	        return arquetipo;
+	    }
+	    
+	    public int buscarArquetipoPorNome(String nome) {
+	        
+	        String sql = "SELECT id FROM arquetipos WHERE nome = ?";
+	        int arquetipoID = 0;
+
+	    
+	        try (Connection conexao = DatabaseConnection.conectar();
+	             PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+	    
+	            stmt.setString(1, nome);
+	    
+	            try (ResultSet rs = stmt.executeQuery()) {
+	    
+	                if (rs.next()) {
+	                	
+	                	arquetipoID = rs.getInt("id");
+	                	
+	                }
+	            }
+
+	        } catch (SQLException e) {
+	    
+	            e.printStackTrace();
+	        }
+
+	    
+	        return arquetipoID;
 	    }
 
 
