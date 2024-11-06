@@ -1,5 +1,6 @@
-package entities;
+package utilities;
 
+import entities.Arquetipo;
 import repository.RepositoryArquetipo;
 
 public class PopulandoArquetipo {

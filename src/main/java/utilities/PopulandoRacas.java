@@ -1,5 +1,6 @@
-package entities;
+package utilities;
 
+import entities.Raca;
 import repository.RepositoryRaca;
 
 public class PopulandoRacas {

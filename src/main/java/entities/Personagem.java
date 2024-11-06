@@ -63,6 +63,8 @@ public class Personagem extends Lutador{
 		this.personagemRacaId = personagemRacaId;
 		this.personagemArquetipoId = personagemArquetipoId;
 		
+		
+		
 	}
 
 	

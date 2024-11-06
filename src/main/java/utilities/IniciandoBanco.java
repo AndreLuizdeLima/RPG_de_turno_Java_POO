@@ -1,6 +1,4 @@
-import entities.PopulandoArquetipo;
-import entities.PopulandoRacas;
-
+package utilities;
 public class IniciandoBanco {
 
 	public void IniciandoBanco() {

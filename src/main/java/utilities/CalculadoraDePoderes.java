@@ -10,9 +10,15 @@ public class CalculadoraDePoderes {
 	
 	
 	
+	private int racaId;
+	private int arquetipoId;
+
 	public int calculaVida (int racaId, int arquetipoId) {
 		int vida = 0;
-			
+		this.racaId = racaId;
+		this.arquetipoId = arquetipoId;
+		
+		
 		RepositoryArquetipo repositoryArquetipo = new RepositoryArquetipo();
 		RepositoryRaca repositoryRaca = new RepositoryRaca();
 		
@@ -22,10 +28,12 @@ public class CalculadoraDePoderes {
 		int racaBonusVida = raca.getBonusVida();
 		int arquetipoBonusVida = arquetipo.getBonusVida();
 		
-		vida = racaBonusVida + racaBonusVida;
+		vida = racaBonusVida + arquetipoBonusVida;
 		
 		System.out.println("Bonus vida Arquetipo "+ arquetipoBonusVida);
 		System.out.println("Bonus vida Raca " + racaBonusVida);
+		
+		System.out.println("Vida "+ vida);
 		
 		return vida;
 	}
@@ -67,9 +75,9 @@ public class CalculadoraDePoderes {
 	public int calculaPoderHabilidade(int racaId, int arquetipoId) {
 		int poderHabilidade = 0;
 		
-		RepositoryArquetipo repositoryArquetipo = new RepositoryArquetipo();
 		RepositoryRaca repositoryRaca = new RepositoryRaca();
-		
+		RepositoryArquetipo repositoryArquetipo = new RepositoryArquetipo();
+
 		Raca raca = repositoryRaca.buscarRacaPorObjetoId(racaId);
 		Arquetipo arquetipo = repositoryArquetipo.buscarArquetipoPorId(arquetipoId);
 		
