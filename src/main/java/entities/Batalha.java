@@ -121,7 +121,7 @@ public class Batalha {
 				parada += 1;
 				
 				System.out.println("Jogador 1 ganhou");
-				
+				// teste
 			}
 				
 			
