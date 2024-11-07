@@ -23,7 +23,7 @@ public class DatabaseConnection {
     
     public static Connection conectar() throws SQLException {
         final String fullUrl = databaseInitialized ? URL + DATABASE_NAME : URL;
-        System.out.println("Tentando conectar com" + fullUrl);
+        //System.out.println("Tentando conectar com" + fullUrl);
     
         Connection conexao = DriverManager.getConnection(fullUrl, USER, PASSWORD);
     
@@ -32,6 +32,8 @@ public class DatabaseConnection {
             inicializarBancoDeDados(conexao);
     
             databaseInitialized = true;
+            
+            
         }
     
         return conexao;

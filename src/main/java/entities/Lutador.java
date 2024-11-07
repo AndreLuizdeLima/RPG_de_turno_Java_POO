@@ -72,10 +72,8 @@ public abstract class Lutador {
 	}
 
 
-	public void setVida() {
-		// TODO Auto-generated method stub
-		
-	}
+	
+	
 
 
 

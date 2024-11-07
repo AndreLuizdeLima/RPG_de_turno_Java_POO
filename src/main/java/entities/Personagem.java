@@ -1,6 +1,6 @@
 package entities;
 
-import repository.RepositoryArquetipo;
+import utilities.CalculadoraDePoderes;
 
 public class Personagem extends Lutador{
 
@@ -51,27 +51,26 @@ public class Personagem extends Lutador{
 
 
 
-	public Personagem(String nome,int personagemRacaId, int personagemArquetipoId) {
+	public Personagem(String nome,int personagemRacaId, int personagemArquetipoId) {		
+		CalculadoraDePoderes calculaPoder = new CalculadoraDePoderes();
 		
 		this.nome = nome;
+		this.vida = calculaPoder.calculaVida(personagemRacaId, personagemArquetipoId);
+		this.escudo = calculaPoder.calculaEscudo(personagemRacaId, personagemArquetipoId);
+		this.poderFisico = calculaPoder.calculaPoderFisico(personagemRacaId, personagemArquetipoId);
+		this.poderHabilidade = calculaPoder.calculaPoderHabilidade(personagemRacaId, personagemArquetipoId);
 		this.personagemRacaId = personagemRacaId;
 		this.personagemArquetipoId = personagemArquetipoId;
-	}
-
-
-	public void setandoVida() {
-		
-		Raca raca = new Raca();
-		Arquetipo arquetipo = new Arquetipo();
-		RepositoryArquetipo repositoryArquetipo = new RepositoryArquetipo();
-		repositoryArquetipo.buscarArquetipoPorNome("Magos");
-		int bonusVidaRaca = raca.getBonusVida();
-		int bonusVidaArquetipo = arquetipo.getBonusVida();
-		
-		System.out.println("Bonus de vida: " + nome + "=" +  bonusVidaArquetipo);
 		
 		
 	}
+
+	
+
+	
+
+
+	
 	
 	
 	

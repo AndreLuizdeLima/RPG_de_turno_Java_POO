@@ -1,5 +1,6 @@
-package entities;
+package utilities;
 
+import entities.Arquetipo;
 import repository.RepositoryArquetipo;
 
 public class PopulandoArquetipo {
@@ -9,7 +10,7 @@ public class PopulandoArquetipo {
 		Arquetipo arquetipo = new Arquetipo();
 		RepositoryArquetipo repositoryArquetipo = new RepositoryArquetipo();
 		
-		arquetipo.setNome("Magos");
+		arquetipo.setNome("Mago");
     	arquetipo.setBonusVida(50);
     	arquetipo.setBonusEscudo(20);
     	arquetipo.setBonusPoderFisico(30);
@@ -23,35 +24,35 @@ public class PopulandoArquetipo {
     	arquetipo.setBonusPoderHabilidade(30);
     	repositoryArquetipo.salvarArquetipo(arquetipo);
     	
-    	arquetipo.setNome("Paladinos");
+    	arquetipo.setNome("Paladino");
     	arquetipo.setBonusVida(120);
     	arquetipo.setBonusEscudo(80);
     	arquetipo.setBonusPoderFisico(100);
     	arquetipo.setBonusPoderHabilidade(50);
     	repositoryArquetipo.salvarArquetipo(arquetipo);
     	
-    	arquetipo.setNome("Clérigos");
+    	arquetipo.setNome("Clérigo");
     	arquetipo.setBonusVida(100);
     	arquetipo.setBonusEscudo(60);
     	arquetipo.setBonusPoderFisico(40);
     	arquetipo.setBonusPoderHabilidade(100);
     	repositoryArquetipo.salvarArquetipo(arquetipo);
     	
-    	arquetipo.setNome("Bardos");
+    	arquetipo.setNome("Bardo");
     	arquetipo.setBonusVida(80);
     	arquetipo.setBonusEscudo(40);
     	arquetipo.setBonusPoderFisico(50);
     	arquetipo.setBonusPoderHabilidade(90);
     	repositoryArquetipo.salvarArquetipo(arquetipo);
     	
-    	arquetipo.setNome("Arqueiros");
+    	arquetipo.setNome("Arqueiro");
     	arquetipo.setBonusVida(90);
     	arquetipo.setBonusEscudo(30);
     	arquetipo.setBonusPoderFisico(80);
     	arquetipo.setBonusPoderHabilidade(80);
     	repositoryArquetipo.salvarArquetipo(arquetipo);
     	
-    	arquetipo.setNome("Ferreiros");
+    	arquetipo.setNome("Ferreiro");
     	arquetipo.setBonusVida(140);
     	arquetipo.setBonusEscudo(120);
     	arquetipo.setBonusPoderFisico(100);
@@ -72,7 +73,7 @@ public class PopulandoArquetipo {
     	arquetipo.setBonusPoderHabilidade(120);
     	repositoryArquetipo.salvarArquetipo(arquetipo);
     	
-    	arquetipo.setNome("Druidas");
+    	arquetipo.setNome("Druida");
     	arquetipo.setBonusVida(80);
     	arquetipo.setBonusEscudo(50);
     	arquetipo.setBonusPoderFisico(40);
