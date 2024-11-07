@@ -52,7 +52,6 @@ public class Personagem extends Lutador{
 
 
 	public Personagem(String nome,int personagemRacaId, int personagemArquetipoId) {		
-		
 		CalculadoraDePoderes calculaPoder = new CalculadoraDePoderes();
 		
 		this.nome = nome;
@@ -62,7 +61,6 @@ public class Personagem extends Lutador{
 		this.poderHabilidade = calculaPoder.calculaPoderHabilidade(personagemRacaId, personagemArquetipoId);
 		this.personagemRacaId = personagemRacaId;
 		this.personagemArquetipoId = personagemArquetipoId;
-		
 		
 		
 	}
