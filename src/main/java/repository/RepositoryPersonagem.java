@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import database.DatabaseConnection;
+import entities.Arquetipo;
 import entities.Personagem;
 
 public class RepositoryPersonagem {
@@ -49,5 +50,38 @@ public class RepositoryPersonagem {
             // Em caso de erro, imprime o stack trace para facilitar a identificação do problema
             e.printStackTrace();
         }
+    }
+    
+    public Personagem buscarPersonagemPorId(int id) {
+	    
+        String sql = " SELECT * FROM personagens WHERE id = ?";
+        Personagem personagem = null;
+
+    
+        try (Connection conexao = DatabaseConnection.conectar();
+             PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+    
+            stmt.setInt(1, id);
+    
+            try (ResultSet rs = stmt.executeQuery()) {
+    
+                if (rs.next()) {
+                	personagem = new Personagem(rs.getString("nome"),rs.getInt("racaId"),rs.getInt("arquetipoId"));
+            
+                	personagem.setVida(rs.getInt("vida"));
+                	personagem.setEscudo(rs.getInt("escudo"));
+                	personagem.setPoderFisico(rs.getInt("poderFisico"));
+                	personagem.setPoderHabilidade(rs.getInt("poderHabilidade"));
+                }
+            }
+
+        } catch (SQLException e) {
+    
+            e.printStackTrace();
+        }
+
+    
+        return personagem;
     }
 }
