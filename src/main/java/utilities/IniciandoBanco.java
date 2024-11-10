@@ -1,4 +1,11 @@
 package utilities;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import database.DatabaseConnection;
+
 public class IniciandoBanco {
 
 	public void IniciandoBanco() {
@@ -9,6 +16,24 @@ public class IniciandoBanco {
 		popularRacas.PopulandoRacas();
 		
 		System.out.println("Racas e Arquetipos Criados com sucesso.Indiferente ");
+		
+	}
+	
+	public void dropDatabase() {
+		
+		String sql = "drop database rpg";
+		
+		 try (Connection conexao = DatabaseConnection.conectar();
+				 
+			PreparedStatement stmt = conexao.prepareStatement(sql)) {
+			 
+
+			  stmt.executeUpdate();
+			 
+		 }catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+		
 		
 	}
 	
