@@ -12,13 +12,16 @@ public class Batalha {
 		int quemJoga = aleatoriedade.quemJoga();
 		
 		RepositoryPersonagem repositoryPersonagem = new RepositoryPersonagem();
+		Personagem personagem1 = repositoryPersonagem.buscarPersonagemPorId(1);
+		Personagem personagem2 = repositoryPersonagem.buscarPersonagemPorId(2);
 		
-		if (quemJoga == 1) {
+		if (quemJoga == 1) {	
 			
-			batalha(repositoryPersonagem.buscarPersonagemPorId(1) ,repositoryPersonagem.buscarPersonagemPorId(2));
+			System.out.println("metodo: iniciaBatalha " + personagem1.getNome() + "  Ataca primeiro o  " + personagem2.getNome() );
+			batalha( personagem1, personagem2);
 		}else {
-			
-			batalha(repositoryPersonagem.buscarPersonagemPorId(2) ,repositoryPersonagem.buscarPersonagemPorId(1));
+			System.out.println("metodo: iniciaBatalha" + personagem2.getNome() + " Ataca primeiro o " + personagem1.getNome() );
+			batalha(personagem2 ,personagem1);
 		}
 		
 		
@@ -108,6 +111,8 @@ public class Batalha {
 				
 			}
 			
+			contador += 1;
+			
 			if (jogador1.getVida() <= 0) {
 				
 				parada += 1;
@@ -126,7 +131,7 @@ public class Batalha {
 				
 			
 		
-			contador += 1;
+			
 		}
 		
 		return ganhador;
