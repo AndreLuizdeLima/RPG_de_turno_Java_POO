@@ -33,11 +33,6 @@ public class Main {
 
 		iniciandoBanco.clearDatabase();
 		
-		
-		
-		
-		
-		
 
 		
 	}

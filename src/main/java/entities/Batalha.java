@@ -22,8 +22,7 @@ public class Batalha {
 		System.out.println();
 		
 		if (quemJoga == 1) {	
-			
-			System.out.println("Iniciando batalha" + personagem1.getNome() + "  Ataca primeiro o  " + personagem2.getNome() );
+			System.out.println("Iniciando batalha " + personagem1.getNome() + " Ataca primeiro o  " + personagem2.getNome() );
 			batalha( personagem1, personagem2);
 		}else {
 			System.out.println("Iniciando batalha " + personagem2.getNome() + " Ataca primeiro o " + personagem1.getNome() );
@@ -50,17 +49,17 @@ public class Batalha {
 		while (true) {
 			
 			if (jogador2.getVida() <= 0) {
-				
+				System.out.println();
 				System.out.println("Jogador 1: " + jogador1.getNome() + " Venceu o Jogador 2: "+ jogador2.getNome());
-				
+				System.out.println();
 				
 				break;
 			}
 			
 			if (jogador1.getVida() <= 0) {
-				
+				System.out.println();
 				System.out.println("Jogador 2: " + jogador2.getNome() + " Venceu o Jogador 1: "+ jogador1.getNome());
-				
+				System.out.println();
 				break;
 			}
 			
@@ -70,25 +69,22 @@ public class Batalha {
 				
 				
 				int ataqueJogador1 = jogador1.getPoderFisico() + jogador1.getPoderHabilidade()  + aleatoriedade.rolaDados();
+				System.out.println();
+				System.out.println("Ataque do " + jogador1.getNome() + " no jogador "+ jogador2.getNome() + ". ATAQUE:"+ ataqueJogador1);
 				
-				System.out.println("Ataque do " + jogador1.getNome() + " no jogador "+ jogador2.getNome() + " ataque:"+ ataqueJogador1);
-				 
 				if(ataqueJogador1 < jogador2.getEscudo()) {
-					
-					
 					jogador2.setEscudo(jogador2.getEscudo() - ataqueJogador1);
-					
-					
 					System.out.println(ataqueJogador1 + " Descontado do escudo do " + jogador2.getNome() );
-					
+					System.out.println();
 				}else {
 					
 					int ataque = ataqueJogador1 - jogador2.getEscudo();
 					
 					jogador2.setVida(jogador2.getVida() - ataque);
+					jogador2.setEscudo(0);
 					
-					System.out.println(ataque + " Dano sofrido pelo jogador" + jogador2.getNome());
-					
+					System.out.println(ataque + " Dano sofrido pelo jogador " + jogador2.getNome());
+					System.out.println();
 					
 				}
 								
@@ -99,13 +95,12 @@ public class Batalha {
 				
 				int ataqueJogador2 =  jogador2.getPoderFisico() + jogador2.getPoderHabilidade()  + aleatoriedade.rolaDados();
 				
-				
-				System.out.println("Ataque do " + jogador2.getNome() + " no jogador "+ jogador1.getNome() + " ataque:"+ ataqueJogador2);
+				System.out.println("Ataque do " + jogador2.getNome() + " no jogador "+ jogador1.getNome() + ". ATAQUE:"+ ataqueJogador2);
 				 
 				if(ataqueJogador2 < jogador1.getEscudo()) {
 					
 					
-					jogador2.setEscudo(jogador2.getEscudo() - ataqueJogador2);
+					jogador1.setEscudo(jogador1.getEscudo() - ataqueJogador2);
 					
 					
 					System.out.println(ataqueJogador2 + " Descontado do escudo do " + jogador1.getNome() );
@@ -115,8 +110,10 @@ public class Batalha {
 					int ataque = ataqueJogador2 - jogador1.getEscudo();
 					
 					jogador1.setVida(jogador1.getVida() - ataque);
+					jogador1.setEscudo(0);
 					
-					System.out.println(ataque + "Dano sofrido pelo jogador" + jogador1.getNome());
+					System.out.println(ataque + " Dano sofrido pelo jogador" + jogador1.getNome());
+					System.out.println();
 					
 					
 				}
