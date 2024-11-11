@@ -35,7 +35,7 @@ public class Main {
 		
 		batalha.iniciaBatalha();
 
-		
+		iniciandoBanco.clearDatabase();
 		//System.out.println(repositoryPersonagem.buscarPersonagemPorId(1));
 		
 		

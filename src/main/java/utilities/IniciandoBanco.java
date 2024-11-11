@@ -15,13 +15,13 @@ public class IniciandoBanco {
 		popularArquetipos.PopulandoArquetipo();
 		popularRacas.PopulandoRacas();
 		
-		System.out.println("Racas e Arquetipos Criados com sucesso.Indiferente ");
+		System.out.println("Racas e Arquetipos Criados com sucesso");
 		
 	}
 	
-	public void dropDatabase() {
+	public void clearDatabase() {
 		
-		String sql = "drop database rpg";
+		String sql = "delete from personagens";
 		
 		 try (Connection conexao = DatabaseConnection.conectar();
 				 
@@ -34,7 +34,23 @@ public class IniciandoBanco {
 	            e.printStackTrace();
 	        }
 		
+		System.out.println("Personagens deletados");
 		
+		String sql1 = "ALTER TABLE personagens AUTO_INCREMENT = 1";
+		
+		 try (Connection conexao = DatabaseConnection.conectar();
+				 
+			PreparedStatement stmt = conexao.prepareStatement(sql1)) {
+			 
+
+			  stmt.executeUpdate();
+			 
+		 }catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+		 
+		 System.out.println("Auto incremente reset");
+		 
 	}
-	
+		
 }
