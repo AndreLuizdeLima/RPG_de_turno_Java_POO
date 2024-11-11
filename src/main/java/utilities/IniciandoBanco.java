@@ -34,7 +34,6 @@ public class IniciandoBanco {
 	            e.printStackTrace();
 	        }
 		
-		System.out.println("Personagens deletados");
 		
 		String sql1 = "ALTER TABLE personagens AUTO_INCREMENT = 1";
 		
@@ -49,7 +48,6 @@ public class IniciandoBanco {
 	            e.printStackTrace();
 	        }
 		 
-		 System.out.println("Auto incremente reset");
 		 
 	}
 		

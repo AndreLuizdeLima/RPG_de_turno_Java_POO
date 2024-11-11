@@ -14,20 +14,16 @@ public class Main {
 
 		
 		IniciandoBanco iniciandoBanco = new IniciandoBanco();
-		iniciandoBanco.IniciandoBanco();
-		
-	
 		RepositoryRaca repositoryRaca = new RepositoryRaca();
 		RepositoryArquetipo repositoryArquetipo = new RepositoryArquetipo();
 		RepositoryPersonagem repositoryPersonagem = new RepositoryPersonagem();
 		
+		iniciandoBanco.IniciandoBanco();
+		
 		Personagem personagem = new Personagem("Andre", repositoryRaca.buscarRacaPorNome("Humanos")  , repositoryArquetipo.buscarArquetipoPorNome("Mago"));
 		
 		repositoryPersonagem.salvarPersonagem(personagem);
-		
-		System.out.println(personagem);
-		
-		
+			
 		Personagem personagem2 = new Personagem("Eduar", repositoryRaca.buscarRacaPorNome("Elfos")  , repositoryArquetipo.buscarArquetipoPorNome("Bardo") );
 		repositoryPersonagem.salvarPersonagem(personagem2);
 		
@@ -36,7 +32,6 @@ public class Main {
 		batalha.iniciaBatalha();
 
 		iniciandoBanco.clearDatabase();
-		//System.out.println(repositoryPersonagem.buscarPersonagemPorId(1));
 		
 		
 		
