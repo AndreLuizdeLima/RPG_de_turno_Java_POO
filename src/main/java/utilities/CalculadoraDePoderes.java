@@ -27,7 +27,7 @@ public class CalculadoraDePoderes {
 	}
 	
 	public int calculaEscudo(int racaId, int arquetipoId) {
-		int escudo = 500;
+		int escudo = 1000;
 		
 		RepositoryArquetipo repositoryArquetipo = new RepositoryArquetipo();
 		RepositoryRaca repositoryRaca = new RepositoryRaca();
