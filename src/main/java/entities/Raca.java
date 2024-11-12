@@ -8,9 +8,6 @@ public class Raca {
 	private int bonusEscudo;
 	private int bonusPoderFisico;
 	private int bonusPoderHabilidade;
-	
-	
-
 
 	public String getNome() {
 		return nome;
@@ -66,15 +63,4 @@ public class Raca {
 				+ ", bonusPoderFisico=" + bonusPoderFisico + ", bonusPoderHabilidade=" + bonusPoderHabilidade + "]";
 	}
 
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

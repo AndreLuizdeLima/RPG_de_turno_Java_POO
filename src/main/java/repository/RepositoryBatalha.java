@@ -9,28 +9,24 @@ import entities.Batalha;
 
 public class RepositoryBatalha {
 
-	 public void salvaBatalha(Batalha batalha) {
-		    
-	        String sql = "INSERT INTO batalhaResultado (lutador1, lutador2, vencedor) VALUES (?, ?, ?)";
+	public void salvaBatalha(Batalha batalha) {
 
-	    
-	        try (Connection conexao = DatabaseConnection.conectar();
-	    
-	             PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+		String sql = "INSERT INTO batalhaResultado (lutador1, lutador2, vencedor) VALUES (?, ?, ?)";
 
-	    
-	            
-	            stmt.setString(1, batalha.getLutador1());
-	            stmt.setString(2, batalha.getLutador2());
-	            stmt.setString(3, batalha.getVencedor());
-	    
-	            stmt.executeUpdate();
-	    
-	        } catch (SQLException e) {
-	    
-	            e.printStackTrace();
-	        }
-	    }
-	
-	
+		try (Connection conexao = DatabaseConnection.conectar();
+
+				PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+
+			stmt.setString(1, batalha.getLutador1());
+			stmt.setString(2, batalha.getLutador2());
+			stmt.setString(3, batalha.getVencedor());
+
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+	}
+
 }

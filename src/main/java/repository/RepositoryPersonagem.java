@@ -10,68 +10,58 @@ import entities.Personagem;
 
 public class RepositoryPersonagem {
 
-    public void salvarPersonagem(Personagem personagem) {
-    	
-    	
-        
-        String sql = "INSERT INTO personagens ( nome, vida, escudo, poderFisico, poderHabilidade, racaId, arquetipoId) "
-        		+ "VALUES ( ?, ?, ?, ?, ?, ?, ?)";
+	public void salvarPersonagem(Personagem personagem) {
 
-        
-        try (Connection conexao = DatabaseConnection.conectar();
+		String sql = "INSERT INTO personagens ( nome, vida, escudo, poderFisico, poderHabilidade, racaId, arquetipoId) "
+				+ "VALUES ( ?, ?, ?, ?, ?, ?, ?)";
 
-             PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
-        	
-        	
+		try (Connection conexao = DatabaseConnection.conectar();
 
-            stmt.setString(1, personagem.getNome());
-            stmt.setInt(2, personagem.getVida());
-            stmt.setInt(3, personagem.getEscudo());
-            stmt.setInt(4, personagem.getPoderFisico());
-            stmt.setInt(5, personagem.getPoderHabilidade());
-            stmt.setInt(6, personagem.getPersonagem1RacaId());
-            stmt.setInt(7, personagem.getPersonagem1ArquetipoId());
-            stmt.executeUpdate();
+				PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
-            System.out.println("Personagem salvo: " + personagem.getNome() );
-            
-            
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public Personagem buscarPersonagemPorId(int id) {
-	    
-        String sql = " SELECT * FROM personagens WHERE id = ?";
-        Personagem personagem = null;
+			stmt.setString(1, personagem.getNome());
+			stmt.setInt(2, personagem.getVida());
+			stmt.setInt(3, personagem.getEscudo());
+			stmt.setInt(4, personagem.getPoderFisico());
+			stmt.setInt(5, personagem.getPoderHabilidade());
+			stmt.setInt(6, personagem.getPersonagem1RacaId());
+			stmt.setInt(7, personagem.getPersonagem1ArquetipoId());
+			stmt.executeUpdate();
 
-    
-        try (Connection conexao = DatabaseConnection.conectar();
-             PreparedStatement stmt = conexao.prepareStatement(sql)) {
+			System.out.println("Personagem salvo: " + personagem.getNome());
 
-    
-            stmt.setInt(1, id);
-    
-            try (ResultSet rs = stmt.executeQuery()) {
-    
-                if (rs.next()) {
-                	personagem = new Personagem(rs.getString("nome"),rs.getInt("racaId"),rs.getInt("arquetipoId"));
-            
-                	personagem.setVida(rs.getInt("vida"));
-                	personagem.setEscudo(rs.getInt("escudo"));
-                	personagem.setPoderFisico(rs.getInt("poderFisico"));
-                	personagem.setPoderHabilidade(rs.getInt("poderHabilidade"));
-                }
-            }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
-        } catch (SQLException e) {
-    
-            e.printStackTrace();
-        }
+	public Personagem buscarPersonagemPorId(int id) {
 
-    
-        return personagem;
-    }
+		String sql = " SELECT * FROM personagens WHERE id = ?";
+		Personagem personagem = null;
+
+		try (Connection conexao = DatabaseConnection.conectar();
+				PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+			stmt.setInt(1, id);
+
+			try (ResultSet rs = stmt.executeQuery()) {
+
+				if (rs.next()) {
+					personagem = new Personagem(rs.getString("nome"), rs.getInt("racaId"), rs.getInt("arquetipoId"));
+
+					personagem.setVida(rs.getInt("vida"));
+					personagem.setEscudo(rs.getInt("escudo"));
+					personagem.setPoderFisico(rs.getInt("poderFisico"));
+					personagem.setPoderHabilidade(rs.getInt("poderHabilidade"));
+				}
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return personagem;
+	}
 }

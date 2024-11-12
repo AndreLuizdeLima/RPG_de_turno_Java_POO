@@ -12,133 +12,117 @@ import entities.Arquetipo;
 
 public class RepositoryArquetipo {
 
-	 public void salvarArquetipo(Arquetipo arquetipo) {
-		    
-	        String sql = "INSERT INTO arquetipos (nome, bonusVida, bonusEscudo, bonusPoderFisico, bonusPoderHabilidade) VALUES (?, ?, ?, ?, ?)";
+	public void salvarArquetipo(Arquetipo arquetipo) {
 
-	    
-	        try (Connection conexao = DatabaseConnection.conectar();
-	    
-	             PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+		String sql = "INSERT INTO arquetipos (nome, bonusVida, bonusEscudo, bonusPoderFisico, bonusPoderHabilidade) VALUES (?, ?, ?, ?, ?)";
 
-	    
-	            stmt.setString(1, arquetipo.getNome());
-	            stmt.setInt(2, arquetipo.getBonusVida());
-	            stmt.setInt(3, arquetipo.getBonusEscudo());
-	            stmt.setInt(4, arquetipo.getBonusPoderFisico());
-	            stmt.setInt(5, arquetipo.getBonusPoderHabilidade());
-	    
-	            stmt.executeUpdate();
+		try (Connection conexao = DatabaseConnection.conectar();
 
-	           //System.out.println("Arquetipo " + arquetipo.getNome() + " salvo com sucesso!!");
-	            
-	            
-	    
-	        } catch (SQLException e) {
-	    
-	            e.printStackTrace();
-	        }
-	    }
-	 
-	 public List<Arquetipo> buscarTodasArquetipo() {
-		    
-	        List<Arquetipo> arquetipoArray = new ArrayList<>();
-	    
-	        String sql = "SELECT * FROM arquetipos";
+				PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
-	    
-	        try (Connection conexao = DatabaseConnection.conectar();
-	             PreparedStatement stmt = conexao.prepareStatement(sql);
-	             ResultSet rs = stmt.executeQuery()) {
+			stmt.setString(1, arquetipo.getNome());
+			stmt.setInt(2, arquetipo.getBonusVida());
+			stmt.setInt(3, arquetipo.getBonusEscudo());
+			stmt.setInt(4, arquetipo.getBonusPoderFisico());
+			stmt.setInt(5, arquetipo.getBonusPoderHabilidade());
 
-	    
-	            while (rs.next()) {
-	            	Arquetipo arquetipo = new Arquetipo();
-	            	
-	            	arquetipo.setNome(rs.getString("nome"));
-	            	arquetipo.setBonusVida(rs.getInt("bonusVida"));
-	            	arquetipo.setBonusEscudo(rs.getInt("bonusEscudo"));
-	            	arquetipo.setBonusPoderFisico(rs.getInt("bonusPoderFisico"));
-	            	arquetipo.setBonusPoderHabilidade(rs.getInt("bonusPoderHabilidade"));
-	    
-	            	arquetipoArray.add(arquetipo);
-	                
-	                
-	            }
+			stmt.executeUpdate();
 
-	        } catch (SQLException e) {
-	    
-	            e.printStackTrace();
-	        }
+			// System.out.println("Arquetipo " + arquetipo.getNome() + " salvo com
+			// sucesso!!");
 
-	    
-	        return arquetipoArray;
-	    }
+		} catch (SQLException e) {
 
-	   
-	    
-	    public Arquetipo buscarArquetipoPorId(int id) {
-	    
-	        String sql = " SELECT * FROM arquetipos WHERE id = ?";
-	        Arquetipo arquetipo = null;
+			e.printStackTrace();
+		}
+	}
 
-	    
-	        try (Connection conexao = DatabaseConnection.conectar();
-	             PreparedStatement stmt = conexao.prepareStatement(sql)) {
+	public List<Arquetipo> buscarTodasArquetipo() {
 
-	    
-	            stmt.setInt(1, id);
-	    
-	            try (ResultSet rs = stmt.executeQuery()) {
-	    
-	                if (rs.next()) {
-	                	arquetipo = new Arquetipo();
-	                	arquetipo.setNome(rs.getString("nome"));
-	                	arquetipo.setBonusVida(rs.getInt("bonusVida"));
-	                	arquetipo.setBonusEscudo(rs.getInt("bonusEscudo"));
-	                	arquetipo.setBonusPoderFisico(rs.getInt("bonusPoderFisico"));
-	                	arquetipo.setBonusPoderHabilidade(rs.getInt("bonusPoderHabilidade"));
-	                }
-	            }
+		List<Arquetipo> arquetipoArray = new ArrayList<>();
 
-	        } catch (SQLException e) {
-	    
-	            e.printStackTrace();
-	        }
+		String sql = "SELECT * FROM arquetipos";
 
-	    
-	        return arquetipo;
-	    }
-	    
-	    public int buscarArquetipoPorNome(String nome) {
-	        
-	        String sql = "SELECT id FROM arquetipos WHERE nome = ?";
-	        int arquetipoID = 0;
+		try (Connection conexao = DatabaseConnection.conectar();
+				PreparedStatement stmt = conexao.prepareStatement(sql);
+				ResultSet rs = stmt.executeQuery()) {
 
-	    
-	        try (Connection conexao = DatabaseConnection.conectar();
-	             PreparedStatement stmt = conexao.prepareStatement(sql)) {
+			while (rs.next()) {
+				Arquetipo arquetipo = new Arquetipo();
 
-	    
-	            stmt.setString(1, nome);
-	    
-	            try (ResultSet rs = stmt.executeQuery()) {
-	    
-	                if (rs.next()) {
-	                	
-	                	arquetipoID = rs.getInt("id");
-	                	
-	                }
-	            }
+				arquetipo.setNome(rs.getString("nome"));
+				arquetipo.setBonusVida(rs.getInt("bonusVida"));
+				arquetipo.setBonusEscudo(rs.getInt("bonusEscudo"));
+				arquetipo.setBonusPoderFisico(rs.getInt("bonusPoderFisico"));
+				arquetipo.setBonusPoderHabilidade(rs.getInt("bonusPoderHabilidade"));
 
-	        } catch (SQLException e) {
-	    
-	            e.printStackTrace();
-	        }
+				arquetipoArray.add(arquetipo);
 
-	    
-	        return arquetipoID;
-	    }
+			}
 
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return arquetipoArray;
+	}
+
+	public Arquetipo buscarArquetipoPorId(int id) {
+
+		String sql = " SELECT * FROM arquetipos WHERE id = ?";
+		Arquetipo arquetipo = null;
+
+		try (Connection conexao = DatabaseConnection.conectar();
+				PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+			stmt.setInt(1, id);
+
+			try (ResultSet rs = stmt.executeQuery()) {
+
+				if (rs.next()) {
+					arquetipo = new Arquetipo();
+					arquetipo.setNome(rs.getString("nome"));
+					arquetipo.setBonusVida(rs.getInt("bonusVida"));
+					arquetipo.setBonusEscudo(rs.getInt("bonusEscudo"));
+					arquetipo.setBonusPoderFisico(rs.getInt("bonusPoderFisico"));
+					arquetipo.setBonusPoderHabilidade(rs.getInt("bonusPoderHabilidade"));
+				}
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return arquetipo;
+	}
+
+	public int buscarArquetipoPorNome(String nome) {
+
+		String sql = "SELECT id FROM arquetipos WHERE nome = ?";
+		int arquetipoID = 0;
+
+		try (Connection conexao = DatabaseConnection.conectar();
+				PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+			stmt.setString(1, nome);
+
+			try (ResultSet rs = stmt.executeQuery()) {
+
+				if (rs.next()) {
+
+					arquetipoID = rs.getInt("id");
+
+				}
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return arquetipoID;
+	}
 
 }

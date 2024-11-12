@@ -11,132 +11,115 @@ import database.DatabaseConnection;
 import entities.Raca;
 
 public class RepositoryRaca {
-	
-    
-    public void salvarRaca(Raca raca) {
-    
-        String sql = "INSERT INTO racas (nome, bonusVida, bonusEscudo, bonusPoderFisico, bonusPoderHabilidade) VALUES (?, ?, ?, ?, ?)";
 
-    
-        try (Connection conexao = DatabaseConnection.conectar();
-    
-             PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+	public void salvarRaca(Raca raca) {
 
-    
-            stmt.setString(1, raca.getNome());
-            stmt.setInt(2, raca.getBonusVida());
-            stmt.setInt(3, raca.getBonusEscudo());
-            stmt.setInt(4, raca.getBonusPoderFisico());
-            stmt.setInt(5, raca.getBonusPoderHabilidade());
-    
-            stmt.executeUpdate();
+		String sql = "INSERT INTO racas (nome, bonusVida, bonusEscudo, bonusPoderFisico, bonusPoderHabilidade) VALUES (?, ?, ?, ?, ?)";
 
-            //System.out.println("Raça " + raca.getNome() + " salva com sucesso!!");
-    
-        } catch (SQLException e) {
-    
-            e.printStackTrace();
-        }
-    }
+		try (Connection conexao = DatabaseConnection.conectar();
 
-    
-    public List<Raca> buscarTodasRacas() {
-    
-        List<Raca> racasArray = new ArrayList<>();
-    
-        String sql = "SELECT * FROM racas";
+				PreparedStatement stmt = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
-    
-        try (Connection conexao = DatabaseConnection.conectar();
-             PreparedStatement stmt = conexao.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+			stmt.setString(1, raca.getNome());
+			stmt.setInt(2, raca.getBonusVida());
+			stmt.setInt(3, raca.getBonusEscudo());
+			stmt.setInt(4, raca.getBonusPoderFisico());
+			stmt.setInt(5, raca.getBonusPoderHabilidade());
 
-    
-            while (rs.next()) {
-                Raca raca = new Raca();
-                raca.setNome(rs.getString("nome"));
-                raca.setBonusVida(rs.getInt("bonusVida"));
-                raca.setBonusEscudo(rs.getInt("bonusEscudo"));
-                raca.setBonusPoderFisico(rs.getInt("bonusPoderFisico"));
-                raca.setBonusPoderHabilidade(rs.getInt("bonusPoderHabilidade"));
-    
-                racasArray.add(raca);
-                
-                
-            }
+			stmt.executeUpdate();
 
-        } catch (SQLException e) {
-    
-            e.printStackTrace();
-        }
+			// System.out.println("Raça " + raca.getNome() + " salva com sucesso!!");
 
-    
-        return racasArray;
-    }
+		} catch (SQLException e) {
 
-   
-    
-    
-    public Raca buscarRacaPorObjetoId(int id) {
-    
-        String sql = "SELECT * FROM racas WHERE id = ?";
-        Raca raca = null;
+			e.printStackTrace();
+		}
+	}
 
-    
-        try (Connection conexao = DatabaseConnection.conectar();
-             PreparedStatement stmt = conexao.prepareStatement(sql)) {
+	public List<Raca> buscarTodasRacas() {
 
-    
-            stmt.setInt(1, id);
-    
-            try (ResultSet rs = stmt.executeQuery()) {
-    
-                if (rs.next()) {
-                    raca = new Raca();
-                    raca.setNome(rs.getString("nome"));
-                    raca.setBonusVida(rs.getInt("bonusVida"));
-                    raca.setBonusEscudo(rs.getInt("bonusEscudo"));
-                    raca.setBonusPoderFisico(rs.getInt("bonusPoderFisico"));
-                    raca.setBonusPoderHabilidade(rs.getInt("bonusPoderHabilidade"));
-                }
-            }
+		List<Raca> racasArray = new ArrayList<>();
 
-        } catch (SQLException e) {
-    
-            e.printStackTrace();
-        }
+		String sql = "SELECT * FROM racas";
 
-    
-        return raca;
-    }
-    
-    public int buscarRacaPorNome(String nome) {
-        
-        String sql = "SELECT id FROM racas WHERE nome = ?";
-        int racaID = 0;
+		try (Connection conexao = DatabaseConnection.conectar();
+				PreparedStatement stmt = conexao.prepareStatement(sql);
+				ResultSet rs = stmt.executeQuery()) {
 
-    
-        try (Connection conexao = DatabaseConnection.conectar();
-             PreparedStatement stmt = conexao.prepareStatement(sql)) {
+			while (rs.next()) {
+				Raca raca = new Raca();
+				raca.setNome(rs.getString("nome"));
+				raca.setBonusVida(rs.getInt("bonusVida"));
+				raca.setBonusEscudo(rs.getInt("bonusEscudo"));
+				raca.setBonusPoderFisico(rs.getInt("bonusPoderFisico"));
+				raca.setBonusPoderHabilidade(rs.getInt("bonusPoderHabilidade"));
 
-    
-            stmt.setString(1, nome);
-    
-            try (ResultSet rs = stmt.executeQuery()) {
-    
-                if (rs.next()) {
-                	
-                	racaID = rs.getInt("id");
-                	
-                }
-            }
+				racasArray.add(raca);
 
-        } catch (SQLException e) {
-    
-            e.printStackTrace();
-        }
+			}
 
-    
-        return racaID;
-    }
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return racasArray;
+	}
+
+	public Raca buscarRacaPorObjetoId(int id) {
+
+		String sql = "SELECT * FROM racas WHERE id = ?";
+		Raca raca = null;
+
+		try (Connection conexao = DatabaseConnection.conectar();
+				PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+			stmt.setInt(1, id);
+
+			try (ResultSet rs = stmt.executeQuery()) {
+
+				if (rs.next()) {
+					raca = new Raca();
+					raca.setNome(rs.getString("nome"));
+					raca.setBonusVida(rs.getInt("bonusVida"));
+					raca.setBonusEscudo(rs.getInt("bonusEscudo"));
+					raca.setBonusPoderFisico(rs.getInt("bonusPoderFisico"));
+					raca.setBonusPoderHabilidade(rs.getInt("bonusPoderHabilidade"));
+				}
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return raca;
+	}
+
+	public int buscarRacaPorNome(String nome) {
+
+		String sql = "SELECT id FROM racas WHERE nome = ?";
+		int racaID = 0;
+
+		try (Connection conexao = DatabaseConnection.conectar();
+				PreparedStatement stmt = conexao.prepareStatement(sql)) {
+
+			stmt.setString(1, nome);
+
+			try (ResultSet rs = stmt.executeQuery()) {
+
+				if (rs.next()) {
+
+					racaID = rs.getInt("id");
+
+				}
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return racaID;
+	}
 }
