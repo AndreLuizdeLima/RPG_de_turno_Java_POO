@@ -3,6 +3,7 @@ import java.sql.SQLException;
 import entities.Batalha;
 import entities.Personagem;
 import repository.RepositoryArquetipo;
+import repository.RepositoryBatalha;
 import repository.RepositoryPersonagem;
 import repository.RepositoryRaca;
 import utilities.IniciandoBanco;
@@ -17,6 +18,7 @@ public class Main {
 		RepositoryRaca repositoryRaca = new RepositoryRaca();
 		RepositoryArquetipo repositoryArquetipo = new RepositoryArquetipo();
 		RepositoryPersonagem repositoryPersonagem = new RepositoryPersonagem();
+		RepositoryBatalha repositoryBatalha = new RepositoryBatalha();
 		
 		iniciandoBanco.IniciandoBanco();
 		
@@ -30,7 +32,9 @@ public class Main {
 		Batalha batalha = new Batalha();
 		
 		batalha.iniciaBatalha();
-
+		
+		repositoryBatalha.salvaBatalha(batalha);
+		
 		iniciandoBanco.clearDatabase();
 		
 

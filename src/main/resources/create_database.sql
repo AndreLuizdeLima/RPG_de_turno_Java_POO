@@ -34,12 +34,9 @@ create table IF NOT EXISTS personagens (
     Foreign Key (arquetipoId) REFERENCES arquetipos(id)
 );
 
-create table IF NOT EXISTS batalhas (
-    id int primary key,
-    lutador1_id int,
-    lutador2_id int,
-    vencedor_id int,
-    Foreign Key (lutador1_id) REFERENCES personagens(id),
-    Foreign Key (lutador2_id) REFERENCES personagens(id),
-    Foreign Key (vencedor_id) REFERENCES personagens(id)
+create table IF NOT EXISTS batalhaResultado (
+    id int primary key AUTO_INCREMENT,
+    lutador1 varchar(255),
+    lutador2 varchar(255),
+    vencedor varchar(255)
 );

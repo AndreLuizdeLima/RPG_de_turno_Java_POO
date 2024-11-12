@@ -4,6 +4,11 @@ import repository.RepositoryPersonagem;
 import utilities.Aleatoridade;
 
 public class Batalha {
+	
+	private String vencedor;
+	private String lutador1;
+	private String lutador2;
+	
 
 	public void iniciaBatalha() {
 		
@@ -24,9 +29,16 @@ public class Batalha {
 		if (quemJoga == 1) {	
 			System.out.println("Iniciando batalha " + personagem1.getNome() + " Ataca primeiro o  " + personagem2.getNome() );
 			batalha( personagem1, personagem2);
+			
+			lutador1 = personagem1.getNome();
+			lutador2 = personagem2.getNome();
+			
 		}else {
 			System.out.println("Iniciando batalha " + personagem2.getNome() + " Ataca primeiro o " + personagem1.getNome() );
 			batalha(personagem2 ,personagem1);
+			
+			lutador1 = personagem2.getNome();
+			lutador2 = personagem1.getNome();
 		}
 		
 		System.out.println();
@@ -36,12 +48,10 @@ public class Batalha {
 		System.out.println();
 	}
 	
-	private String batalha(Personagem jogador1, Personagem jogador2) {
+	private void batalha(Personagem jogador1, Personagem jogador2) {
 		
 		Aleatoridade aleatoriedade = new Aleatoridade();
 	
-		
-		String ganhador = null;
 		int contador = 0; 
 		
 		
@@ -53,6 +63,8 @@ public class Batalha {
 				System.out.println("Jogador 1: " + jogador1.getNome() + " Venceu o Jogador 2: "+ jogador2.getNome());
 				System.out.println();
 				
+				vencedor = jogador1.getNome();
+				
 				break;
 			}
 			
@@ -60,6 +72,9 @@ public class Batalha {
 				System.out.println();
 				System.out.println("Jogador 2: " + jogador2.getNome() + " Venceu o Jogador 1: "+ jogador1.getNome());
 				System.out.println();
+				
+				vencedor = jogador2.getNome();
+				
 				break;
 			}
 			
@@ -114,26 +129,35 @@ public class Batalha {
 					
 					System.out.println(ataque + " Dano sofrido pelo jogador" + jogador1.getNome());
 					System.out.println();
-					
-					
 				}
-				
-				
-				
 				contador += 1;
 			}
-			
-			
-			
-			
-			
 		}
-		
-		
-		
-		
-		return ganhador;
-		
 	}
+
+	public String getVencedor() {
+		return vencedor;
+	}
+
+	public void setVencedor(String vencedor) {
+		this.vencedor = vencedor;
+	}
+
+	public String getLutador1() {
+		return lutador1;
+	}
+
+	public void setLutador1(String lutador1) {
+		this.lutador1 = lutador1;
+	}
+
+	public String getLutador2() {
+		return lutador2;
+	}
+
+	public void setLutador2(String lutador2) {
+		this.lutador2 = lutador2;
+	}
+	
 	
 }
